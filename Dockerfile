@@ -10,7 +10,9 @@ RUN dnf -y update && \
         atomic-reactor \
         git \
         koji \
+        flatpak \
         nfs-utils \
+        ostree \
         python-atomic-reactor-koji \
         python-atomic-reactor-metadata \
         python-atomic-reactor-rebuilds \
