@@ -7,19 +7,22 @@ LABEL com.redhat.component=osbs-fedora-buildroot
 
 RUN dnf -y update && \
     dnf -y install \
+        btrfs-progs-devel \
         desktop-file-utils \
+        device-mapper-devel \
         e2fsprogs \
         fedpkg \
         git \
+        glib2-devel \
         golang \
+        gpgme-devel \
         koji \
         flatpak \
         gssproxy \
+        libassuan-devel \
         nfs-utils \
         ostree \
-        python-atomic-reactor-koji \
-        python-atomic-reactor-metadata \
-        python-atomic-reactor-rebuilds \
+        ostree-devel \
         python-backports-lzma \
         python-docker-py \
         python-docker-squash \
@@ -28,8 +31,6 @@ RUN dnf -y update && \
         python-simplejson \
         golang-github-cpuguy83-go-md2man && \
     dnf clean all
-
-RUN dnf -y install btrfs-progs-devel device-mapper-devel glib2-devel gpgme-devel libassuan-devel ostree-devel
 
 RUN mkdir -p /tmp/go/src/owtaylor && \
     git clone https://github.com/owtaylor/skopeo.git /tmp/go/src/github.com/projectatomic/skopeo && \
