@@ -1,6 +1,6 @@
 FROM fedora:26
 
-LABEL name=vrutkovs/buildroot
+LABEL name=owtaylor/fedora-buildroot
 LABEL version=1.0
 LABEL release=1
 LABEL com.redhat.component=osbs-fedora-buildroot
