@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:26
 
 LABEL name=vrutkovs/buildroot
 LABEL version=1.0
