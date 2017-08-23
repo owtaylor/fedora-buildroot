@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+import os
+import yaml
+
+SECRETS_PATH = "/var/run/secrets/atomic-reactor"
+SECRET_NAME = "reactor-config-secret"
+CONFIG_NAME = "config.yaml"
+
+CONFIG_PATH = os.path.join(SECRETS_PATH, SECRET_NAME, CONFIG_NAME)
+
+if os.path.exists(CONFIG_PATH):
+   with open(CONFIG_PATH, "r") as f:
+      data = yaml.load(f)
+
+   osbs_box_data = data.get('osbs_box', {})
+   hosts_data = osbs_box_data.get('hosts', None)
+   if hosts_data:
+      with open('/etc/hosts', 'a') as f:
+         f.write('\n')
+         for ip, hosts in hosts_data.items():
+            f.write('{}\t{}\n'.format(ip, ' '.join(hosts)))

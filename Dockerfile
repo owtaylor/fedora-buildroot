@@ -45,4 +45,6 @@ RUN cd /tmp/atomic-reactor && python setup.py install
 RUN git clone -b flatpak-support https://github.com/owtaylor/osbs-client.git /tmp/osbs-client
 RUN cd /tmp/osbs-client && python setup.py install
 
-CMD ["atomic-reactor", "--verbose", "inside-build", "--input", "osv3"]
+ADD entrypoint.sh osbs-box-update-hosts /usr/local/bin/
+
+CMD ["entrypoint.sh"]
