@@ -39,11 +39,14 @@ RUN mkdir -p /tmp/go/src/owtaylor && \
          cp skopeo /usr/local/bin && \
          install -D default-policy.json /etc/containers/policy.json )
 
-RUN git clone -b flatpak-support https://github.com/owtaylor/atomic-reactor.git /tmp/atomic-reactor
-RUN cd /tmp/atomic-reactor && python setup.py install
+RUN git clone -b flatpak-support https://github.com/owtaylor/atomic-reactor.git /tmp/atomic-reactor && \
+    cd /tmp/atomic-reactor && \
+    python setup.py install
 
-RUN git clone -b flatpak-support https://github.com/owtaylor/osbs-client.git /tmp/osbs-client
-RUN cd /tmp/osbs-client && python setup.py install
+RUN git clone -b flatpak-support https://github.com/owtaylor/osbs-client.git /tmp/osbs-client && \
+    cd /tmp/osbs-client && \
+    python setup.py install && \
+    install -D -t /usr/share/osbs inputs/*.json
 
 ADD entrypoint.sh osbs-box-update-hosts /usr/local/bin/
 
