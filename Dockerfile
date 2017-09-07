@@ -35,7 +35,7 @@ RUN ( dnf -y update glibc || true ) && \
     dnf clean all
 
 RUN mkdir -p /tmp/go/src/owtaylor && \
-    git clone https://github.com/owtaylor/skopeo.git /tmp/go/src/github.com/projectatomic/skopeo && \
+    git clone https://github.com/projectatomic/skopeo.git /tmp/go/src/github.com/projectatomic/skopeo && \
     ( cd /tmp/go/src/github.com/projectatomic/skopeo && \
          GOPATH=/tmp/go make binary-local && \
          cp skopeo /usr/local/bin && \
