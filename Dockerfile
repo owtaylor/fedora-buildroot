@@ -5,7 +5,9 @@ LABEL version=1.0
 LABEL release=1
 LABEL com.redhat.component=osbs-fedora-buildroot
 
-RUN dnf -y update && \
+# https://bugzilla.redhat.com/show_bug.cgi?id=1483553
+RUN ( dnf -y update glibc || true ) && \
+    dnf -y update && \
     dnf -y install \
         btrfs-progs-devel \
         desktop-file-utils \
